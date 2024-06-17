@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+    long long P = 23;
+    long long G = 5;
+    long long a = 6; 
+    long long b = 15;
+    long long A = (long long)pow(G, a) % P;
+    long long B = (long long)pow(G, b) % P;
+    long long shared_secret_A = (long long)pow(B, a) % P;
+    long long shared_secret_B = (long long)pow(A, b) % P;
+    printf("Public key of Alice (A): %lld\n", A);
+    printf("Public key of Bob (B): %lld\n", B);
+    printf("Shared secret calculated by Alice: %lld\n", shared_secret_A);
+    printf("Shared secret calculated by Bob: %lld\n", shared_secret_B);
+    if (shared_secret_A == shared_secret_B) {
+        printf("Shared secret match! Key exchange successful.\n");
+    } else {
+        printf("Shared secret do not match! Key exchange failed.\n");
+    }
+    return 0;
+}
